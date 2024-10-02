@@ -31,7 +31,7 @@ export const fetchWeatherData = createAsyncThunk<
       }
     );
     const data = await response.json();
-    return data;
+    return data.locality_weather_data;
   }
 );
 
