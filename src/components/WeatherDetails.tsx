@@ -15,7 +15,6 @@ export default function WeatherDetails(
     return <p>Loading...</p>;
   }
 
-  console.log(location);
   return (
     <div className='flex flex-col items-center justify-center gap-4'>
       <SearchBar />

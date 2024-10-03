@@ -27,7 +27,7 @@ export default function WeatherPage({
   useEffect(() => {
     dispatch(fetchWeatherData(coordinates)); // Ensure correct typing
   }, [location, dispatch]);
-  console.log(location);
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <WeatherDetails weather={weather} location={location} />

@@ -1,6 +1,7 @@
 // store/weatherSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState, AppDispatch } from './store'; // Import types from store
+import { getWeather } from '../utils/queries';
 
 interface WeatherState {
   data: any;
@@ -19,21 +20,10 @@ export const fetchWeatherData = createAsyncThunk<
   any, // Return type of the payload creator
   { latitude: number; longitude: number }, // First argument type
   { state: RootState } // Optional: Type for thunk API
->(
-  'weather/fetchWeatherData',
-  async ({ latitude = '12.933756', longitude = '77.625825' }) => {
-    const response = await fetch(
-      `https://www.weatherunion.com/gw/weather/external/v0/get_weather_data?latitude=${latitude}&longitude=${longitude}`,
-      {
-        headers: {
-          'X-Zomato-Api-Key': process.env.API_KEY,
-        },
-      }
-    );
-    const data = await response.json();
-    return data.locality_weather_data;
-  }
-);
+>('weather/fetchWeatherData', async ({ latitude, longitude }) => {
+  const data = await getWeather({ latitude, longitude });
+  return data;
+});
 
 const weatherSlice = createSlice({
   name: 'weather',
