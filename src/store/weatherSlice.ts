@@ -26,7 +26,7 @@ export const fetchWeatherData = createAsyncThunk<
       `https://www.weatherunion.com/gw/weather/external/v0/get_weather_data?latitude=${latitude}&longitude=${longitude}`,
       {
         headers: {
-          'X-Zomato-Api-Key': '5934b3cacd000c28f7fa95546bb87138',
+          'X-Zomato-Api-Key': process.env.API_KEY,
         },
       }
     );
