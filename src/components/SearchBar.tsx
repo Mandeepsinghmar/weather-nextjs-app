@@ -35,11 +35,11 @@ export default function SearchBar() {
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        className='border p-2 rounded-lg text-lg w-80'
+        className='border p-2 rounded-lg text-lg w-80 text-black focus:outline-blue-100 '
         placeholder='Enter a location...'
       />
       <button
-        className=' bg-blue-500 text-white px-6 py-2 rounded-lg'
+        className=' btn-bg font-bold text-white px-6 h-[46px] rounded-lg'
         onClick={() => handleSearch(input)}
       >
         Search

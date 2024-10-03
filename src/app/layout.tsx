@@ -11,7 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body>
+      <body className='main-bg text-white'>
         <Provider store={store}>
           <main>{children}</main>
         </Provider>

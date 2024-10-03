@@ -1,6 +1,6 @@
+// app/weather/[location]/page.tsx
 'use client';
 
-// app/weather/[location]/page.tsx
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch, RootState } from '@/src/store/store';
@@ -19,13 +19,14 @@ export default function WeatherPage({
   const dispatch = useDispatch<AppDispatch>(); // Use typed dispatch
   const weather = useSelector((state: RootState) => state.weather.data);
 
-  const coordinates = {
-    latitude: 12.933756,
-    longitude: 77.625825,
-  };
-
   useEffect(() => {
-    dispatch(fetchWeatherData(coordinates)); // Ensure correct typing
+    if (location) {
+      const coordinates = {
+        latitude: 12.933756, // You might want to get these from your API based on the location
+        longitude: 77.625825,
+      };
+      dispatch(fetchWeatherData(coordinates)); // Ensure correct typing
+    }
   }, [location, dispatch]);
 
   return (
